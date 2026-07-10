@@ -1,15 +1,19 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jeu de Versets</title></head><body><h1>Jeu de Versets Bibliques</h1>
+ <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jeu de Versets</title></head><body><h1>Jeu de Versets Bibliques</h1>
 <p>Bienvenue !</p>
 <button onclick="afficherVerset()">Verset suivant</button>
 <p id="question"></p>
-<script>const versets = [{reference:"Jean 1:1-4", texte:""},{reference:"Exode 25:8-9", texte:""},{reference:"Jean 19:23", texte:""},{reference:"1 Corinthiens 3:16-17", texte:""},{reference:"Proverbes 1:7", texte:""},
+<script>const references = [{reference:"Jean 1:1-4", texte:""},
+{reference:"Exode 25:8-9", texte:""},
+{reference:"Jean 19:23", texte:""},
+{reference:"1 Corinthiens 3:16-17", texte:""},
+{reference:"Proverbes 1:7", texte:""},
 {reference:"Romains 10:17", texte:""},
 {reference:"Jacques 2:26", texte:""},
 {reference:"Matthieu 7:21-24", texte:""},
 {reference:"1 Corinthiens 3:9", texte:""},
 {reference:"1 Pierre 5:8", texte:""},
 {reference:"Matthieu 17:11", texte:""},
-{reference:"Job 34 3-4", texte:""},
+{reference:"Jean 3:4", texte:""},
 {reference:"Matthieu 6:31-33", texte:""},
 {reference:"Luc 8:11", texte:""},
 {reference:"Luc 8:15", texte:""},
@@ -29,11 +33,11 @@
 {reference:"Colossiens 1:16", texte:""},
 {reference:"Zacharie 12:1", texte:""},
 {reference:"Exode 3:14", texte:""},
-{reference:"Psaumes 84:12", texte:""},
+{reference:"Psaume 84:12", texte:""},
 {reference:"Jean 4:24", texte:""},
 {reference:"Exode 14:12-15", texte:""},
 {reference:"Genèse 3:1", texte:""},
-{reference:"Apocalypse 1:20", texte:""},
+{reference:"Apocalypse 20:1", texte:""},
 {reference:"Apocalypse 20:2", texte:""},
 {reference:"Apocalypse 12:7-9", texte:""},
 {reference:"Apocalypse 1:20", texte:""},
@@ -44,4 +48,4 @@
 {reference:"Matthieu 7:21", texte:""},
 {reference:"Matthieu 7:24", texte:""}
 ];
-function afficherVerset() {  const ref = versets[Math.floor(Math.random() * references.length)];  document.getElementById("question").innerText =    "Trouve le contenu du verset : " + ref;}</script></body></html>
+function afficherVerset() {  const ref = references[Math.floor(Math.random() * references.length)];  document.getElementById("question").innerText =    "Trouve le contenu du verset : " + ref;}</script></body></html>
