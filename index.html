@@ -1,10 +1,25 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jeu de Versets</title></head>
 <body>
 <h1>Jeu de Versets Bibliques</h1>
+<div id="menu">
+<button onclick="choisirMode('reference')">
+📖 Référence → Verset
+</button>
+
+<button onclick="choisirMode('verset')">
+✏️ Verset → Référence
+</button>
+
+<button onclick="choisirMode('aleatoire')">
+🎲 Aléatoire
+</button>
+</div>
+
 <button onclick="afficherVerset()">Verset suivant</button>
 <button onclick="afficherContenu()">Afficher le contenu</button>
 <p id="question"></p>
 <p id="reponse"></p>  
+  
 <script>
 
 const versets = [
@@ -15,7 +30,7 @@ const versets = [
 {reference:"Proverbes 1:7", contenu:""},
 {reference:"Romains 10:17", contenu:" Ainsi la foi vient de ce qu'on entend, et ce quon entend vient de la parole de Christ."},
 {reference:"Jacques 2:26", contenu:""},
-{reference:"Matthieu 7:24", contenu:"La pluie est tombée, les torrents sont venus, les vents ont soufflé et se sont jetéscontre cette maison : elle n'est point tombée parce qu'elle était fondée sur le roc."},
+{reference:"Matthieu 7:24", contenu:"La pluie est tombée, les torrents sont venus, les vents ont soufflé et se sont jetés contre cette maison : elle n'est point tombée parce qu'elle était fondée sur le roc."},
 {reference:"1 Corinthiens 3:9", contenu:" Nous sommes ouvriers avec Dieu, vous êtes le champs de Dieu, l'édifice de Dieu."},
 {reference:"1 Pierre 5:8", contenu:" Soyez sobres, veillez. Votre adversaire le diable rôde commeun lyon rugissant, cherchant qu'il dévorera."},
 {reference:"Matthieu 17:11", contenu:""},
@@ -56,6 +71,19 @@ const versets = [
 ];
 
 let versetActuel = null;
+<div id="menu">
+<button onclick="choisirMode('reference')">
+📖 Référence → Verset
+</button>
+
+<button onclick="choisirMode('verset')">
+✏️ Verset → Référence
+</button>
+
+<button onclick="choisirMode('aleatoire')">
+🎲 Aléatoire
+</button>
+</div>
 
 function afficherVerset() {
 
