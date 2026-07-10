@@ -1,0 +1,6 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jeu de Versets</title></head><body><h1>Jeu de Versets Bibliques</h1>
+<p>Bienvenue !</p>
+<button onclick="afficherVerset()">Verset suivant</button>
+<p id="question"></p>
+<script>const references = [  "Jean 1:1-4",  "Romains 10:17",  "Philippiens 4:13",  "Josué 1:9"];
+function afficherVerset() {  const ref = references[Math.floor(Math.random() * references.length)];  document.getElementById("question").innerText =    "Trouve le contenu du verset : " + ref;}</script></body></html>
