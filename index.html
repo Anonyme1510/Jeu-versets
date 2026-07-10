@@ -43,7 +43,9 @@ h1 {
 #question, #reponse {
     margin-top: 25px;
     font-size: 24px;
-}</head>
+}
+</style>
+</head>
 <body>
 <div class="conteneur">
 <h1>Jeu de Versets Bibliques</h1>
@@ -117,19 +119,12 @@ const versets = [
 ];
 
 let versetActuel = null;
-<div id="menu">
-<button onclick="choisirMode('reference')">
-📖 Référence → Verset
-</button>
 
-<button onclick="choisirMode('verset')">
-✏️ Verset → Référence
-</button>
+let mode = "reference";
 
-<button onclick="choisirMode('aleatoire')">
-🎲 Aléatoire
-</button>
-</div>
+function choisirMode(m){
+    mode = m;
+}
 
 function afficherVerset() {
 
