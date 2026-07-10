@@ -63,11 +63,16 @@ h1 {
 </button>
 </div>
 
-<button onclick="afficherVerset()">Verset suivant</button>
-<button onclick="afficherContenu()">Afficher le contenu</button>
+<div id="jeu" style="display:none;">
+
+<button id="btnSuivant" onclick="afficherVerset()"></button>
+
+<button id="btnAfficher" onclick="afficherContenu()"></button>
+
 <p id="question"></p>
-<p id="reponse"></p>  
-  
+<p id="reponse"></p>
+
+</div>
 <script>
 
 const versets = [
@@ -122,29 +127,95 @@ let versetActuel = null;
 
 let mode = "reference";
 
+    modeJeu = mode;
+
 function choisirMode(m){
+
     mode = m;
+
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("jeu").style.display = "block";
+
+    afficherVerset();
+
 }
 
 function afficherVerset() {
 
-versetActuel = versets[Math.floor(Math.random() * versets.length)];
+    versetActuel = versets[Math.floor(Math.random() * versets.length)];
 
-document.getElementById("question").innerText =
-versetActuel.reference;
+    document.getElementById("reponse").innerText = "";
 
-document.getElementById("reponse").innerText = "";
+    if(mode=="reference"){
 
+        document.getElementById("question").innerText =
+        versetActuel.reference;
+
+        document.getElementById("btnAfficher").innerText =
+        "Afficher le contenu";
+
+        document.getElementById("btnSuivant").innerText =
+        "Verset suivant";
+
+    }
+
+    else if(mode=="verset"){
+
+        document.getElementById("question").innerText =
+        versetActuel.contenu;
+
+        document.getElementById("btnAfficher").innerText =
+        "Afficher la référence";
+
+        document.getElementById("btnSuivant").innerText =
+        "Contenu suivant";
+
+    }
+
+    else{
+
+        if(Math.random()<0.5){
+
+            document.getElementById("question").innerText =
+            versetActuel.reference;
+
+            document.getElementById("btnAfficher").innerText =
+            "Afficher le contenu";
+
+        }
+        else{
+
+            document.getElementById("question").innerText =
+            versetActuel.contenu;
+
+            document.getElementById("btnAfficher").innerText =
+            "Afficher la référence";
+
+        }
+
+        document.getElementById("btnSuivant").innerText =
+        "Suivant";
+
+    }
 }
+    
 
-function afficherContenu() {
+function afficherContenu(){
 
-if(versetActuel){
+    if(!versetActuel) return;
 
-document.getElementById("reponse").innerText =
-versetActuel.contenu;
+    if(document.getElementById("btnAfficher").innerText=="Afficher le contenu"){
 
-}
+        document.getElementById("reponse").innerText =
+        versetActuel.contenu;
+
+    }
+    else{
+
+        document.getElementById("reponse").innerText =
+        versetActuel.reference;
+
+    }
 
 }
 
