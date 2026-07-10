@@ -68,7 +68,7 @@ h1 {
 <button id="btnSuivant" onclick="afficherVerset()"></button>
 
 <button id="btnAfficher" onclick="afficherContenu()"></button>
-<button onclick="retourMenu()">⬅ Retour au menu</button>
+<button onclick="retourMenu()">⬅ Menu</button>
 <p id="question"></p>
 <p id="reponse"></p>
 
@@ -216,6 +216,17 @@ function afficherContenu(){
         versetActuel.reference;
 
     }
+
+}
+
+
+function retourMenu(){
+
+    document.getElementById("jeu").style.display = "none";
+    document.getElementById("menu").style.display = "block";
+
+    document.getElementById("question").innerText = "";
+    document.getElementById("reponse").innerText = "";
 
 }
 
