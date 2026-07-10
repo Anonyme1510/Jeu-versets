@@ -2,19 +2,53 @@
 <body>
 <h1>Jeu de Versets Bibliques</h1>
 <button onclick="afficherVerset()">Verset suivant</button>
+<button onclick="afficherContenu()">Afficher le contenu</button>
 <p id="question"></p>
 <p id="reponse"></p>  
 <script>
-const versets = [{reference:"Jean 1:1-4",contenu:"Le contenu du verset sera ajouté ici."},{reference:"Romains 10:17",contenu:"Le contenu du verset sera ajouté ici."},{reference:"Philippiens 4:13",contenu:"Le contenu du verset sera ajouté ici."},{reference:"Josué 1:9",contenu:"Le contenu du verset sera ajouté ici."}]
+
+const versets = [
+{
+reference:"Jean 1:1-4",
+contenu:"Le contenu du verset sera ajouté ici."
+},
+{
+reference:"Romains 10:17",
+contenu:"Le contenu du verset sera ajouté ici."
+},
+{
+reference:"Philippiens 4:13",
+contenu:"Le contenu du verset sera ajouté ici."
+},
+{
+reference:"Josué 1:9",
+contenu:"Le contenu du verset sera ajouté ici."
+}
+];
+
 let versetActuel = null;
+
 function afficherVerset() {
+
 versetActuel = versets[Math.floor(Math.random() * versets.length)];
-document.getElementById("question").innerText =versetActuel.reference;
+
+document.getElementById("question").innerText =
+versetActuel.reference;
+
 document.getElementById("reponse").innerText = "";
+
 }
+
 function afficherContenu() {
+
 if(versetActuel){
-document.getElementById("reponse").innerText =versetActuel.contenu;
+
+document.getElementById("reponse").innerText =
+versetActuel.contenu;
+
 }
+
+}
+
 </script>
 </body></html>
