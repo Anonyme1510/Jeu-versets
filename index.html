@@ -76,6 +76,44 @@ h1 {
     font-weight:bold;
     margin:20px 0;
 }
+
+#score{
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+
+/* Adaptation téléphone */
+    
+@media (max-width: 600px){
+
+    #panneauReponse{
+        position:fixed;
+        top:10px;
+        left:50%;
+        transform:translateX(-50%);
+        width:85%;
+        padding:20px;
+        z-index:1000;
+    }
+
+    .conteneur{
+        margin-top:230px;
+        width:85%;
+        padding:25px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    #question, #reponse{
+        font-size:20px;
+    }
+
+}
+    
     
 </style>
 </head>
