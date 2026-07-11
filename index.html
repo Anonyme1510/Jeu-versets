@@ -65,6 +65,15 @@ h1 {
 
 <div id="jeu" style="display:none;">
 
+<p id="score">0/0</p>
+
+<div id="zoneReponse" style="display:none;">
+    <input
+        type="text"
+        id="saisie"
+        placeholder="Écris la référence">
+</div>
+    
 <button id="btnSuivant" onclick="afficherVerset()"></button>
 
 <button id="btnAfficher" onclick="afficherContenu()"></button>
@@ -87,7 +96,7 @@ const versets = [
 {reference:"Matthieu 7:24", contenu:"La pluie est tombée, les torrents sont venus, les vents ont soufflé et se sont jetés contre cette maison : elle n'est point tombée parce qu'elle était fondée sur le roc."},
 {reference:"1 Corinthiens 3:9", contenu:" Nous sommes ouvriers avec Dieu, vous êtes le champs de Dieu, l'édifice de Dieu."},
 {reference:"1 Pierre 5:8", contenu:" Soyez sobres, veillez. Votre adversaire le diable rôde commeun lyon rugissant, cherchant qu'il dévorera."},
-{reference:"Matthieu 17:11", contenu:""},
+{reference:"Actes 17:11", contenu:"Ces Juifs avaient des sentiments plus nobles que ceux de Thessalonique; ils reçurent la parole avec beaucoup d'empressement, et ils examinaient chaque jour les Écritures, pour voir si ce qu'on leur disait était exact."},
 {reference:"Jean 3:5-6", contenu:"Jésus répondit: En vérité, en vérité, je te le dis, si un homme ne naît d'eau et d'Esprit, il ne peut entrer dans le royaume de Dieu.Ce qui est né de la chair est chair, et ce qui est né de l'Esprit est Esprit."},
 {reference:"Matthieu 6:31-33", contenu:"Ne vous inquiétez donc point, et ne dites pas: Que mangerons-nous? que boirons-nous? de quoi serons-nous vêtus?Car toutes ces choses, ce sont les païens qui les recherchent. Votre Père céleste sait que vous en avez besoin.Cherchez premièrement le royaume et la justice de Dieu; et toutes ces choses vous seront données par-dessus."},
 {reference:"Job 34:3-4", contenu:"Car l'oreille discerne les paroles, Comme le palais savoure les aliments.Choisissons ce qui est juste, Voyons entre nous ce qui est bon."},
@@ -108,7 +117,7 @@ const versets = [
 {reference:"Hébreux 1:14", contenu:"Ne sont-ils pas tous des esprits au service de Dieu, envoyés pour exercer un ministère en faveur de ceux qui doivent hériter du salut?"},
 {reference:"Colossiens 1:16", contenu:"Car en lui ont été créées toutes les choses qui sont dans les cieux et sur la terre, les visibles et les invisibles, trônes, dignités, dominations, autorités. Tout a été créé par lui et pour lui."},
 {reference:"Zacharie 12:1", contenu:"Oracle, parole de l'Éternel sur Israël. Ainsi parle l'Éternel, qui a étendu les cieux et fondé la terre, Et qui a formé l'esprit de l'homme au dedans de lui:"},
-{reference:"Exode 3:14", contenu:"Dieu dit à Moïse: Je suis celui qui suis. Et il ajouta: C'est ainsi que tu répondras aux enfants d'Israël: Celui qui s'appelle 'je suis'm'a envoyé vers vous."},
+{reference:"Exode 3:14", contenu:"Dieu dit à Moïse: Je suis celui qui suis. Et il ajouta: C'est ainsi que tu répondras aux enfants d'Israël: Celui qui s'appelle 'je suis m'a envoyé vers vous."},
 {reference:"Exode 14:14", contenu:"L'Éternel combattra pour vous; et vous, gardez le silence."},
 {reference:"Psaumes 84:12", contenu:"Car l'Éternel Dieu est un soleil et un bouclier, L'Éternel donne la grâce et la gloire, Il ne refuse aucun bien à ceux qui marchent dans l'intégrité."},
 {reference:"Jean 4:24", contenu:"Dieu est Esprit, et il faut que ceux qui l'adorent l'adorent en esprit et en vérité."},
@@ -129,7 +138,8 @@ const versets = [
 let versetActuel = null;
 
 let mode = "reference";
-
+let bonnesReponses = 0;
+let nombreJoue = 0;
     modeJeu = mode;
 
 function choisirMode(m){
@@ -150,6 +160,7 @@ function afficherVerset() {
     document.getElementById("reponse").innerText = "";
 
     if(mode=="reference"){
+        document.getElementById("zoneReponse").style.display = "none";
 
         document.getElementById("question").innerText =
         versetActuel.reference;
@@ -164,6 +175,9 @@ function afficherVerset() {
 
     else if(mode=="verset"){
 
+        document.getElementById("zoneReponse").style.display = "block";
+        document.getElementById("saisie").value = "";
+
         document.getElementById("question").innerText =
         versetActuel.contenu;
 
@@ -176,30 +190,36 @@ function afficherVerset() {
     }
 
     else{
-
+        
         if(Math.random()<0.5){
 
-            document.getElementById("question").innerText =
-            versetActuel.reference;
+        document.getElementById("zoneReponse").style.display = "none";
 
-            document.getElementById("btnAfficher").innerText =
-            "Afficher le contenu";
+        document.getElementById("question").innerText =
+        versetActuel.reference;
+
+        document.getElementById("btnAfficher").innerText =
+        "Afficher le contenu";
 
         }
         else{
 
-            document.getElementById("question").innerText =
-            versetActuel.contenu;
+        document.getElementById("zoneReponse").style.display = "block";
+        document.getElementById("saisie").value = "";
 
-            document.getElementById("btnAfficher").innerText =
-            "Afficher la référence";
+        document.getElementById("question").innerText =
+        versetActuel.contenu;
+
+        document.getElementById("btnAfficher").innerText =
+        "Afficher la référence";
 
         }
+
+    }
 
         document.getElementById("btnSuivant").innerText =
         "Suivant";
 
-    }
 }
     
 
@@ -207,16 +227,28 @@ function afficherContenu(){
 
     if(!versetActuel) return;
 
-    if(document.getElementById("btnAfficher").innerText=="Afficher le contenu"){
+    if(document.getElementById("btnAfficher").innerText=="Afficher la référence"){
+
+        nombreJoue++;
+
+        let reponse = document.getElementById("saisie").value.trim().toLowerCase();
+        let bonne = versetActuel.reference.trim().toLowerCase();
+
+        if(reponse == bonne){
+            bonnesReponses++;
+        }
+
+        document.getElementById("score").innerText =
+        bonnesReponses + "/" + nombreJoue;
 
         document.getElementById("reponse").innerText =
-        versetActuel.contenu;
+        versetActuel.reference;
 
     }
     else{
 
         document.getElementById("reponse").innerText =
-        versetActuel.reference;
+        versetActuel.contenu;
 
     }
 
