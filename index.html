@@ -311,46 +311,37 @@ function afficherContenu(){
 
     if(!versetActuel) return;
 
-nombreJoue++;
+    nombreJoue++;
 
-let reponse = document.getElementById("saisie").value.trim().toLowerCase();
+    let reponse = document.getElementById("saisie").value.trim().toLowerCase();
 
-let bonne;
+    let bonne;
 
-if(mode == "reference"){
-    bonne = versetActuel.contenu.trim().toLowerCase();
-}
-else{
-    bonne = versetActuel.reference.trim().toLowerCase();
-}
-
-if(reponse == bonne){
-    bonnesReponses++;
-}
-
-document.getElementById("score").innerText =
-bonnesReponses + "/" + nombreJoue;
-
-
-if(mode == "reference"){
-    document.getElementById("reponse").innerText =
-    versetActuel.contenu;
-}
-else{
-    document.getElementById("reponse").innerText =
-    versetActuel.reference;
-}
-
+    if(mode == "reference"){
+        bonne = versetActuel.contenu.trim().toLowerCase();
     }
     else{
+        bonne = versetActuel.reference.trim().toLowerCase();
+    }
 
+    if(reponse == bonne){
+        bonnesReponses++;
+    }
+
+    document.getElementById("score").innerText =
+    bonnesReponses + "/" + nombreJoue;
+
+
+    if(mode == "reference"){
         document.getElementById("reponse").innerText =
         versetActuel.contenu;
-
+    }
+    else{
+        document.getElementById("reponse").innerText =
+        versetActuel.reference;
     }
 
 }
-
 
 function retourMenu(){
 
