@@ -249,6 +249,9 @@ function afficherVerset() {
 
     document.getElementById("reponse").innerText = "";
 
+    document.getElementById("panneauReponse").style.display = "block";
+    document.getElementById("saisie").value = "";
+
     if(mode=="reference"){
         document.getElementById("panneauReponse").style.display = "none";
 
@@ -283,8 +286,6 @@ function afficherVerset() {
         
         if(Math.random()<0.5){
 
-        document.getElementById("panneauReponse").style.display = "none";
-
         document.getElementById("question").innerText =
         versetActuel.reference;
 
@@ -294,7 +295,7 @@ function afficherVerset() {
         }
         else{
 
-        document.getElementById("panneauReponse").style.display = "none";
+        
         document.getElementById("saisie").value = "";
 
         document.getElementById("question").innerText =
