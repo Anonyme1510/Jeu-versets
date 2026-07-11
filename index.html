@@ -71,11 +71,6 @@ h1 {
     margin-top:15px;
 }
 
-#score{
-    font-size:30px;
-    font-weight:bold;
-    margin:20px 0;
-}
 
 #score{
     font-size:30px;
@@ -253,7 +248,6 @@ function afficherVerset() {
     document.getElementById("saisie").value = "";
 
     if(mode=="reference"){
-        document.getElementById("panneauReponse").style.display = "none";
 
         document.getElementById("question").innerText =
         versetActuel.reference;
@@ -268,7 +262,6 @@ function afficherVerset() {
 
     else if(mode=="verset"){
 
-        document.getElementById("panneauReponse").style.display = "block";
         document.getElementById("saisie").value = "";
 
         document.getElementById("question").innerText =
