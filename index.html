@@ -113,14 +113,6 @@ h1 {
 
 <div id="jeu" style="display:none;">
 
-<p id="score">0/0</p>
-
-<div id="zoneReponse" style="display:none;">
-    <input
-        type="text"
-        id="saisie"
-        placeholder="Écris la référence">
-</div>
     
 <button id="btnSuivant" onclick="afficherVerset()"></button>
 
@@ -208,7 +200,7 @@ function afficherVerset() {
     document.getElementById("reponse").innerText = "";
 
     if(mode=="reference"){
-        document.getElementById("panneauReponse").style.display = "block";
+        document.getElementById("panneauReponse").style.display = "none";
 
         document.getElementById("question").innerText =
         versetActuel.reference;
@@ -223,7 +215,7 @@ function afficherVerset() {
 
     else if(mode=="verset"){
 
-        document.getElementById("panneauReponse").style.display = "none";
+        document.getElementById("panneauReponse").style.display = "block";
         document.getElementById("saisie").value = "";
 
         document.getElementById("question").innerText =
