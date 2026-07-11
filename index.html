@@ -1,6 +1,7 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jeu de Versets</title><style>
 
 body {
+    
     margin: 0;
     min-height: 100vh;
     font-family: Arial, sans-serif;
@@ -44,9 +45,56 @@ h1 {
     margin-top: 25px;
     font-size: 24px;
 }
+
+#panneauReponse{
+    position:fixed;
+    top:20px;
+    left:20px;
+    width:320px;
+
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(10px);
+
+    padding:25px;
+    border-radius:20px;
+
+    color:white;
+    text-align:center;
+}
+
+#panneauReponse input{
+    width:90%;
+    padding:15px;
+    font-size:20px;
+    border-radius:10px;
+    border:none;
+    margin-top:15px;
+}
+
+#score{
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+    
 </style>
 </head>
 <body>
+
+<div id="panneauReponse" style="display:none;">
+
+    <h2>Réponse</h2>
+
+    <p id="score">0/0</p>
+
+    <input
+        type="text"
+        id="saisie"
+        placeholder="Écris la référence">
+
+</div>
+
+    
 <div class="conteneur">
 <h1>Jeu de Versets Bibliques</h1>
 <div id="menu">
@@ -160,7 +208,7 @@ function afficherVerset() {
     document.getElementById("reponse").innerText = "";
 
     if(mode=="reference"){
-        document.getElementById("zoneReponse").style.display = "none";
+        document.getElementById("panneauReponse").style.display = "block";
 
         document.getElementById("question").innerText =
         versetActuel.reference;
@@ -175,7 +223,7 @@ function afficherVerset() {
 
     else if(mode=="verset"){
 
-        document.getElementById("zoneReponse").style.display = "block";
+        document.getElementById("panneauReponse").style.display = "none";
         document.getElementById("saisie").value = "";
 
         document.getElementById("question").innerText =
@@ -193,7 +241,7 @@ function afficherVerset() {
         
         if(Math.random()<0.5){
 
-        document.getElementById("zoneReponse").style.display = "none";
+        document.getElementById("panneauReponse").style.display = "none";
 
         document.getElementById("question").innerText =
         versetActuel.reference;
@@ -204,7 +252,7 @@ function afficherVerset() {
         }
         else{
 
-        document.getElementById("zoneReponse").style.display = "block";
+        document.getElementById("panneauReponse").style.display = "none";
         document.getElementById("saisie").value = "";
 
         document.getElementById("question").innerText =
